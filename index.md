@@ -29,7 +29,7 @@ We need to create a make.inc file here by modifying one of the template files gi
 cp make.inc-examples/make.inc.openblas make.inc
 ```
 
-Edit make.inc and make the following changes: 1) Uncomment GPU_TARGET and point it to the right GPU, and 2) Add paths to CUDA and your BLAS libraries. For me:
+Edit `make.inc` and make the following changes: 1) Uncomment GPU_TARGET and point it to the right GPU, and 2) Add paths to CUDA and your BLAS libraries. For me:
 
 ```
 GPU_TARGET ?= Volta
