@@ -20,7 +20,7 @@ Next thing we need to install is [MAGMA](http://icl.cs.utk.edu/magma/software/in
 ```
 wget http://icl.utk.edu/projectsfiles/magma/downloads/magma-2.3.0.tar.gz
 tar -xvzf magma-2.3.0.tar.gz
-cd magma-2.3.0.tar.gz
+cd magma-2.3.0
 ```
 
 We need to create a make.inc file here by modifying one of the template files given in `make.inc-examples`. Since I have OpenBLAS, I used `make.inc-examples/make.inc.openblas`
@@ -36,7 +36,20 @@ GPU_TARGET ?= Volta
 CUDADIR = /usr/local/cuda-9.0
 OPENBLASDIR = /usr/lib
 ```
-Save and exit your editor, type `make` and hit Enter. And wait. Get coffee, or lunch, or get some other work done, because building MAGMA takes time! You can test your build of MAGMA with:
+Save and exit your editor, type 
+```
+make
+```
+and hit Enter. And wait. Get coffee, or lunch, or get some other work done, because building MAGMA takes time! 
+
+Recently, some users (including myself) have encountered a new issue, where this step fails at _testing/testing_zlange.cpp_, discussed here[http://icl.cs.utk.edu/magma/forum/viewtopic.php?t=1659]. Use this[https://askubuntu.com/questions/20414/find-and-replace-text-within-a-file-using-commands] to address the issue:
+```
+sed -i 's/\ isnan(/\ std::isnan(/g' testing/*.cpp
+sed -i 's/\ isinf(/\ std::isinf(/g' testing/*.cpp
+```
+and hit `make clean && make` to rebuild MAGMA.
+
+You can test your build of MAGMA with:
 
 ```
 cd testing
