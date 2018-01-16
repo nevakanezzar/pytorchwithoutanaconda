@@ -12,7 +12,7 @@ If you have not already done so, install CUDA 9.0, CuDNN 7, and a BLAS library l
 
 You will also have to get NCCL from NVIDIA, which, if you have already got CuDNN, you know is an annoying process of downloading it from NVIDIA's website after signing in and doing a survey, and then you have to upload it to your AWS instance. Once you have done that, it's straightforward to install it with `dpkg`:
 ```
-dpkg nccl-repo-ubuntu1604-2.1.2-ga-cuda9.0_1-1_amd64.deb
+dpkg -i nccl-repo-ubuntu1604-2.1.2-ga-cuda9.0_1-1_amd64.deb
 ```
 
 Next thing we need to install is [MAGMA](http://icl.cs.utk.edu/magma/software/index.html). I discovered this the hard way, after skipping it on my first pass, successfully building PyTorch from sources, and have it fail the tests, crying for MAGMA. Get the MAGMA sources with:
