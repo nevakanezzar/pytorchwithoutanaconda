@@ -70,7 +70,6 @@ With these preliminaries out of the way, it's fairly painless to build PyTorch f
 ```
 git clone --recursive https://github.com/pytorch/pytorch
 cd pytorch
-git checkout v0.3.0
 sudo python setup.py install
 ```
 
